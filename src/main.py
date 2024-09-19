@@ -1,4 +1,4 @@
-# Demo
+
 if __name__ == '__main__':
     from help_desk import HelpDesk
 
@@ -6,6 +6,6 @@ if __name__ == '__main__':
 
     print(model.db._collection.count())
 
-    prompt = 'Comment faire ma photo de profil Octo ?'
+    prompt = 'Quelle est la différence entre un data scientist et un data engineer ?'
     result, sources = model.retrieval_qa_inference(prompt)
     print(result, sources)

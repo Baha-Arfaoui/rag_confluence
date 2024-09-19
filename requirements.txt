@@ -1,32 +1,24 @@
-langchain
+tiktoken
 openai
 tabulate
 python-environ
-notebook
-kaggle
 yt_dlp
 ffmpeg
 tiktoken
-lark
-pydub  # Load text with Whisper from videos
-pytube  # Get videos from playlist video
-streamlit
-pydantic==1.10.8 # https://github.com/hwchase17/langchain/issues/7548
+streamlit # https://github.com/hwchase17/langchain/issues/7548
 python-dotenv
-
 # Vector DB
 pinecone-client
-chromadb==0.3.26
+chromadb
 clickhouse-connect  # MyScale
-
 # Confluence
 atlassian-python-api
 lxml
 markdownify
 
-
 langchain-openai
 pypdf
 unidecode
 gradio
+langchain-community
 

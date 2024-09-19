@@ -1,10 +1,10 @@
 import sys
 import load_db
 import collections
-from langchain.llms import OpenAI
+from langchain_openai import OpenAI,OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from langchain.embeddings import OpenAIEmbeddings
+
 
 
 class HelpDesk():

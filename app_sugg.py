@@ -11,18 +11,15 @@ from langchain.prompts import SystemMessagePromptTemplate, ChatPromptTemplate, H
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
-from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from locales.localisation import localize_prompt
+from langchain.retrievers.multi_query import MultiQueryRetriever
 from unidecode import unidecode
 from pathlib import Path
-from multi_query import *
-
-multiquery=MultiQueryRetriever
 
 load_dotenv()
 language = os.getenv("LANGUAGE")
-azure_auth = AzureAuthenticator()
-azure_auth.set_environment_variables()
+
 list_llm = [
     # "mistralai/Mistral-7B-Instruct-v0.2", "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "GPT-35",
@@ -42,13 +39,7 @@ def get_llm(llm_model, temperature, max_tokens):
     #         token=os.getenv["HF_TOKEN"]
     #     )
     if llm_model == "GPT-35":
-        llm = AzureChatOpenAI(
-            model="ptc-chat-gpt-35-1106",
-            azure_endpoint="https://dp-ptc-dev-oai-gpt4.openai.azure.com/",
-            api_version="2024-02-15-preview",
-            temperature=temperature,
-            max_tokens=max_tokens,
-        )
+        llm = ChatOpenAI()
     else:
         raise Exception(f"Unknown LLM: {llm_model}")
     return llm
@@ -89,11 +80,7 @@ def load_doc(list_file_path, chunk_size, chunk_overlap):
 
 # Create vector database
 def create_db(splits, collection_name):
-    embedding = AzureOpenAIEmbeddings(
-        model="ptc-text-embedding-ada-002",
-        azure_endpoint="https://dp-ptc-dev-oai-gpt4.openai.azure.com/",
-        api_version="2024-02-15-preview",
-    )
+    embedding = OpenAIEmbeddings()
     # embedding = HuggingFaceInferenceAPIEmbeddings(
     #     api_key=os.getenv("HF_TOKEN"),
     #     api_url="https://xscl9w32v23ubm6k.eu-west-1.aws.endpoints.huggingface.cloud",
