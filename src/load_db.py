@@ -37,6 +37,7 @@ class DataLoader():
 
         docs = loader.load(
             space_key=self.space_key,
+            nclude_attachments=False, limit=50, max_pages=50,keep_markdown_format=True
             # include_attachments=True,
             )
         return docs

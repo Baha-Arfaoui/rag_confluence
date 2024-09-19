@@ -23,3 +23,10 @@ clickhouse-connect  # MyScale
 atlassian-python-api
 lxml
 markdownify
+
+
+langchain-openai
+pypdf
+unidecode
+gradio
+
